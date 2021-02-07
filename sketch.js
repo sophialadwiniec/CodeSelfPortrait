@@ -43,6 +43,24 @@ function draw() {
   ellipse(0,0,15,15);
 
   translate(-(width/1.75),-(height/2.1));
+
+  // drawing face mole
+  fill(160,82,45); 
+  ellipse(width/2.7, height * (4.3/8), 10,15); 
+
+  // mouth
+  // arc(width/2, height * (5/8), 30, 30, 0, radians(180), PIE);
+
+  fill(255, 153, 153); 
+  translate(width/2,height * (5/8));
+  beginShape();
+  vertex(-70,0);
+  bezierVertex(-20,-20,20,-20,70,0);
+  bezierVertex(10,40,-10,40,-70,0)
+  endShape();
+  translate(-(width/2),-(height * (5/8)));
+
+
 }
 
 // allows for the page to be made bigger or smaller and let the canvas and drawings move with it
