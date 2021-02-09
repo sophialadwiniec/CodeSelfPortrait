@@ -69,12 +69,7 @@ function draw() {
     drawDebugInfo();
   }
 
-  // beginShape();
-  // vertex(530, 220);
-  // bezierVertex(750, 200, 750, 400, 580, 850);
-  // bezierVertex(600, 850, 700, 250, 530, 210);
-  // endShape();
-
+  // two hair strokes 
   fill(241,204,143);
   beginShape();
   vertex(540, 240);
@@ -83,12 +78,24 @@ function draw() {
   endShape();
 
 
-  fill(217,179,128);
+  fill(217,179,128);    
   beginShape();
   vertex(570, 240);
   bezierVertex(200, 100, 100, 900, 450, 900);
   bezierVertex(275, 800, 300,300, 570, 240);
   endShape();
+
+  // eyebrows 
+  for(let x = 530; x < 640; x+=5){
+
+    stroke(101, 67, 33); 
+    // line(x, 390, x+3, 375); 
+    curve(x, 360, x-20, 380, x-20, 400, x, 420); 
+    noStroke(); 
+  }
+
+  // stroke(255, 102, 0);
+  // curve(5, 26, 5, 26, 73, 24, 73, 61);
 
 }
 
