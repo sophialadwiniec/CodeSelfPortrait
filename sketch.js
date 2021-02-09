@@ -1,7 +1,8 @@
+var gDebugMode = false;
 
 // Setup code goes here
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1030, 910);
   noStroke(); 
  }
 
@@ -11,7 +12,10 @@ function draw() {
   background(219,145,88,86);
 
   fill(255,203,164,100); 
+  rect(width/2.25, height * (3/4), 125, 125, 20);
+  fill(255,203,164,100); 
   ellipse(width/2,height/2,350,450); 
+  
 
   // eyes
   fill(255); 
@@ -61,9 +65,46 @@ function draw() {
   translate(-(width/2),-(height * (5/8)));
 
 
+  if( gDebugMode == true ) {
+    drawDebugInfo();
+  }
+
+  // beginShape();
+  // vertex(530, 220);
+  // bezierVertex(750, 200, 750, 400, 580, 850);
+  // bezierVertex(600, 850, 700, 250, 530, 210);
+  // endShape();
+
+  fill(241,204,143);
+  beginShape();
+  vertex(540, 240);
+  bezierVertex(800, 150, 800, 900, 550, 900);
+  bezierVertex(700, 800, 700, 275, 540, 240);
+  endShape();
+
+
+  fill(217,179,128);
+  beginShape();
+  vertex(570, 240);
+  bezierVertex(200, 100, 100, 900, 450, 900);
+  bezierVertex(275, 800, 300,300, 570, 240);
+  endShape();
+
 }
 
-// allows for the page to be made bigger or smaller and let the canvas and drawings move with it
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+// // allows for the page to be made bigger or smaller and let the canvas and drawings move with it
+// function windowResized() {
+//   resizeCanvas(windowWidth, windowHeight);
+// }
+
+function drawDebugInfo() {
+  fill(255);
+    text("X: " + mouseX + "   Y: " + mouseY, 20, height - 20);
 }
+
+// keyTyped gets triggered 
+function keyTyped() {
+  if (key === ' ') {
+    gDebugMode = !gDebugMode;
+  }
+ }
