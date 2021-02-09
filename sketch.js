@@ -86,16 +86,45 @@ function draw() {
   endShape();
 
   // eyebrows 
-  for(let x = 530; x < 640; x+=5){
+  // for(let x = 550; x < 640; x+=5){
 
-    stroke(101, 67, 33); 
-    // line(x, 390, x+3, 375); 
-    curve(x, 360, x-20, 380, x-20, 400, x, 420); 
-    noStroke(); 
-  }
+  //   stroke(101, 67, 33); 
+  //   // line(x, 390, x+3, 375); 
+  //   curve(x, 360, x-20, 380, x-20, 400, x, 420); 
+  //   noStroke(); 
+  // }
 
   // stroke(255, 102, 0);
   // curve(5, 26, 5, 26, 73, 24, 73, 61);
+
+  // fill(101, 67, 33); 
+  // line(550, 375, 70, 20);
+  // noStroke(); 
+  noFill();
+  stroke(101, 67, 33);
+  strokeWeight(10); 
+  curve(640, 500, 540, 400, 640, 400, 640, 400);
+  noStroke();
+
+  noFill();
+  stroke(101, 67, 33);
+  strokeWeight(10); 
+  curve(390, 400, 390, 400, 475, 400, 475, 500);
+  noStroke();
+
+  noFill();
+  stroke(0);
+  strokeWeight(2); 
+  curve(5, 26, 73, 24, 73, 61, 15, 65);
+  curve(490, 500,490, 460, 490,505, 470, 560);
+  noStroke();
+
+  noFill();
+  stroke(0);
+  strokeWeight(2); 
+  curve(530, 500,530, 460, 530,505, 550, 560);
+  noStroke();
+
 
 }
 
