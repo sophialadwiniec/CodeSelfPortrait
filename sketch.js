@@ -6,54 +6,79 @@
  
     ---------------------------------------------------------------------
     (*)Notes:
-     (1) I don't really have anything. I tried to make my drawing extremely precise! 
+     (1) I tried to make my drawing extremely precise!
+     which is why there are a lot of hard coded numbers that were pretty difficult 
+     to narrow down and turn into functions but this was super fun to make 
+     (2) I also used the debug mode Scott showed on his video which saved me a ton of time. 
 **************************************************************************/
-
-var gDebugMode = false;
-
 function setup() {
   createCanvas(1030, 910);
   noStroke(); 
 }
 
-
+//draws everything on my face, my background, my hoodie, mouth, etc. 
 function draw() {
-  background(0);
+  //draws background 
+  drawBackground(); 
 
+  //draws head and neck 
   headAndNeck(); 
 
+  //draws hoodie
   hoodie(); 
 
-  //eyes
+  //draws eyes
   eye(2.4, 2.05); 
   eye(1.75, 2.05); 
 
-  //drawing face mole
+  //draws face mole
   faceMole(); 
 
-  //mouth
+  //draws mouth
   mouth(); 
 
-  if( gDebugMode == true ) {
-    drawDebugInfo();
-  }
-
-  //hair
+  //draws hair
   hair(); 
 
-  //eyebrows 
+  //draws eyebrows 
   eyebrows(); 
 
-  //nose
+  //draws nose
   nose(); 
-  //nose ring
+  //draws nose ring
   noseRing(); 
 
-  //check bone lines
+  //draws check bone lines
   cheekBoneLine(380, 390, 400, 420); 
   cheekBoneLine(645, 635, 625, 605); 
 }
 
+//draws a rectangle background with a black background behind it
+//creates circular rectangles 
+function drawBackground(){
+  background(0);
+
+  //variable that allows the color to switch between greens 
+  let switchColor = true; 
+  //i in this case is y and j is x 
+  for(let i = 0; i < 1000; i+=100) {
+    for(let j = 0; j < 1200; j+=100) {
+      if(switchColor) {
+         fill(170, 184, 187);
+      }
+      else {
+        fill(192, 209, 205); 
+      }
+      //changes from true to false and false to true 
+      switchColor = !switchColor; 
+      //draws a rectangle based off the coordinates from j and i 
+      rect(j,i, 100, 100,30);
+    }
+    switchColor = !switchColor; 
+  }
+}
+
+//draws my head and neck 
 function headAndNeck(){
   //hair behind my neck 
   fill(218,167,104);
@@ -70,6 +95,7 @@ function headAndNeck(){
   noStroke();  
 }
 
+// draws the green hoodie I was wearing in my sketch
 function hoodie() {
   fill(68, 120, 65); 
   beginShape(); 
@@ -90,6 +116,7 @@ function hoodie() {
   ellipse(750, 847, 120, 250); 
 }
 
+//draws my lips and lip line 
 function mouth() {
   //lip drawing
   stroke(255, 88, 105, 100); 
@@ -116,6 +143,7 @@ function mouth() {
   noStroke();
 }
 
+//draws my eyes, inner pupil as well at the perspective eyeWidth and eyeHeight provided
 function eye(eyeWidth, eyeHeight) {
   stroke(212, 164, 136); 
   fill(255); 
@@ -138,11 +166,13 @@ function eye(eyeWidth, eyeHeight) {
   noStroke(); 
 }
 
+//draws the mole I have on my face 
 function faceMole() {
   fill(160, 82, 45); 
   ellipse(width/2.7, height * (4.3/8), 10,15); 
 }
 
+//draws the two curves of hair that you see on the screen that shape my face 
 function hair() {
   //draws right side curve
   fill(218, 167, 104);
@@ -161,6 +191,7 @@ function hair() {
   endShape();
 }
 
+//draws the eyebrows on my face 
 function eyebrows() {
   //right eyebrow
   noFill();
@@ -176,6 +207,7 @@ function eyebrows() {
   noStroke();
 }
 
+// draws my nose outline 
 function nose(){
   //draws left line of nose 
   noFill(); 
@@ -208,7 +240,7 @@ function nose(){
   bezierVertex(530, 463, 518, 496, 540, 515); 
   endShape(); 
 
-  //drwas right lower corner of nose
+  //draws right lower corner of nose
   beginShape(); 
   vertex(540, 515); 
   bezierVertex(540, 510, 560, 523, 530, 526); 
@@ -216,6 +248,7 @@ function nose(){
   noStroke(); 
 }
 
+//draws my nose ring 
 function noseRing() {
   strokeWeight(3);
   noFill();
@@ -231,6 +264,7 @@ function noseRing() {
   noStroke();
 }
 
+//draws my cheekbone lines at the respective x coordinates provided 
 function cheekBoneLine(x1, x2, x3, x4) { 
   noFill();
   stroke(0); 
@@ -245,17 +279,3 @@ function cheekBoneLine(x1, x2, x3, x4) {
   endShape();
   noStroke(); 
 }
-
-function drawDebugInfo() {
-
-  fill(255);
-    text("X: " + mouseX + "   Y: " + mouseY, 20, height - 20);
-
-}
-
-// keyTyped gets triggered 
-function keyTyped() {
-  if (key === ' ') {
-    gDebugMode = !gDebugMode;
-  }
- }
